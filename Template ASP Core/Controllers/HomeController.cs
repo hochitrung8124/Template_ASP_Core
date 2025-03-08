@@ -25,9 +25,13 @@ namespace Template_ASP_Core.Controllers
             return View(dataJson);
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Privacy()
         {
-            return View();
+            HttpClient client = new HttpClient();
+            var data = await client.GetAsync("https://localhost:7155/api/SinhVien");
+            var res = await data.Content.ReadAsStringAsync();
+            var dataJson = JsonConvert.DeserializeObject<IEnumerable<SinhVien>>(res);
+            return View(dataJson);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

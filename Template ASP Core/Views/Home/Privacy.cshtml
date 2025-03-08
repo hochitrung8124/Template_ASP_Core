@@ -1,6 +1,21 @@
-﻿@{
+﻿@model IEnumerable<Data.SinhVien>;
+
+@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
-
-<p>Use this page to detail your site's privacy policy.</p>
+@if (Model != null)
+{
+    foreach(var item in Model)
+    {
+        <p>
+            @item.id
+            @item.name            
+       </p>
+    }
+}
+else
+{
+    <p>
+        Không có dữ liệu
+    </p>
+}

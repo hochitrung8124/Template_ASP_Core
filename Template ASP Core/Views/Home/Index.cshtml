@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<Data.WeatherForecast>;
 
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -10,7 +11,7 @@
         @Model.FirstOrDefault().Summary
         @Model.FirstOrDefault().Date
         @Model.FirstOrDefault().TemperatureF
-</p>
+    </p>
 }
 else
 {
