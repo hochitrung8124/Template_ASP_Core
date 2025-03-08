@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{4A3F5CC1-6069-4598-8BE5-795512E95EB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{632CA585-E640-43EC-9EB1-C71F5978AC82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template ASP Core", "Template ASP Core\Template ASP Core.csproj", "{607E6CB5-EA09-4074-8B34-6BBBEF93D83A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A3F5CC1-6069-4598-8BE5-795512E95EB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A3F5CC1-6069-4598-8BE5-795512E95EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A3F5CC1-6069-4598-8BE5-795512E95EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A3F5CC1-6069-4598-8BE5-795512E95EB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{632CA585-E640-43EC-9EB1-C71F5978AC82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{632CA585-E640-43EC-9EB1-C71F5978AC82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{632CA585-E640-43EC-9EB1-C71F5978AC82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{632CA585-E640-43EC-9EB1-C71F5978AC82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{607E6CB5-EA09-4074-8B34-6BBBEF93D83A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{607E6CB5-EA09-4074-8B34-6BBBEF93D83A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{607E6CB5-EA09-4074-8B34-6BBBEF93D83A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{607E6CB5-EA09-4074-8B34-6BBBEF93D83A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {299803A8-FFC8-4644-977B-2567D613A669}
+	EndGlobalSection
+EndGlobal
