@@ -1,4 +1,4 @@
-namespace API
+﻿namespace Data
 {
     public class WeatherForecast
     {
