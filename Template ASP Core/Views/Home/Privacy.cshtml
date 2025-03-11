@@ -1,7 +1,11 @@
-﻿@model IEnumerable<Data.SinhVien>;
-
+﻿@model IEnumerable<Data.SinhVien>
 @{
     ViewData["Title"] = "Privacy Policy";
+}
+<!DOCTYPE html>
+<html lang="en">
+@{
+    ViewData["Title"] = "Tìm Kiếm Sinh Viên";
 }
 @if (Model != null)
 {
@@ -13,9 +17,30 @@
        </p>
     }
 }
-else
-{
-    <p>
-        Không có dữ liệu
-    </p>
-}
+<h1>Tìm Kiếm Sinh Viên</h1>
+
+<form method="get" asp-action="GetById">
+    <label for="studentId">Nhập ID Sinh Viên:</label>
+    <input type="number" id="studentId" name="name" required />
+    <button type="submit">Tìm</button>
+</form>
+@* <script>
+    $(document).ready(function () {
+        $('#myForm').on('submit', function (e) {
+            e.preventDefault(); // Ngăn trình duyệt tải lại trang khi submit
+            var ten = $("#studentId").val();
+            $.ajax({
+                url: '/HomeController/GetById', // Đường dẫn API xử lý dữ liệu
+                data: { name: ten }, // Lấy tất cả dữ liệu từ form
+                success: function (data) {
+                    // Hiển thị thông báo thành công
+                    $('#result').html(data);
+                },
+                error: function (xhr, status, error) {
+                    // Hiển thị thông báo lỗi
+                    $('#result').html('<p>Đã xảy ra lỗi: ' + xhr.responseText + '</p>');
+                }
+            });
+        });
+    });
+</script> *@
