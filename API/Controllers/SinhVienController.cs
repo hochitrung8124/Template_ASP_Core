@@ -36,5 +36,15 @@ public class SinhVienController : ControllerBase
               return BadRequest("không có dữ liệu");
         return Ok(thongTin);     
     }
+
+    [HttpPut("{id}")]
+    public IActionResult UpdateData(int id, [FromBody] SinhVien sinhVien)
+    {
+        var thongTin = List_SinhVien.SingleOrDefault(tt => tt.id == id);
+        if (thongTin == null)
+            return BadRequest("Không tìm thấy sinh viên.");
+        thongTin.name = sinhVien.name;
+        return Ok(thongTin);
+    }
 }
 

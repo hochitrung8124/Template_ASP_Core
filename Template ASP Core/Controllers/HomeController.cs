@@ -1,13 +1,11 @@
 ﻿
 using Data;
-using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
-using System.Xml;
-using System.Xml.Linq;
+using System.Net.Http.Json;
+using System.Text;
 using Template_ASP_Core.Models;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Template_ASP_Core.Controllers
 {
@@ -36,17 +34,48 @@ namespace Template_ASP_Core.Controllers
             var dataJson = JsonConvert.DeserializeObject<IEnumerable<SinhVien>>(res);
             return View(dataJson);
         }
-        public async Task<IActionResult> GetById(int name)
+        public async Task<IActionResult> UpdateData([FromForm] SinhVienModel sinhVien)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                // Địa chỉ API
+                string url = $"https://localhost:7155/api/SinhVien/{sinhVien.id}";
+                // Chuẩn bị nội dung JSON để gửi
+                var content = new StringContent(
+                    JsonConvert.SerializeObject(new { name = sinhVien.name }),
+                    Encoding.UTF8,
+                    "application/json"
+                );
+
+                // Gửi yêu cầu PUT
+                var response = await client.PutAsync(url, content);
+
+                // Kiểm tra phản hồi từ server
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+                    return Ok($"Cập nhật thành công: {result}");
+                }
+                else
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    return BadRequest($"Cập nhật thất bại: {error}");
+                }
+            }
+        }
+
+        public async Task<IActionResult> GetById(int id)
         {
             HttpClient client = new HttpClient();
-            var data = await client.GetAsync($"https://localhost:7155/api/SinhVien/{name}");
+            var data = await client.GetAsync($"https://localhost:7155/api/SinhVien/{id}");
             var res = await data.Content.ReadAsStringAsync();
             var dataJson = JsonConvert.DeserializeObject<SinhVien>(res);
 
             return View(dataJson);
         }
 
-            [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
             public IActionResult Error()
             {
                 return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
