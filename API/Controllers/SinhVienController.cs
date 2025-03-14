@@ -33,8 +33,8 @@ public class SinhVienController : ControllerBase
     {
         var thongTin = List_SinhVien.SingleOrDefault(tt => tt.id.Equals(id));
         if (thongTin == null)
-              return BadRequest("không có dữ liệu");
-        return Ok(thongTin);     
+            return BadRequest("không có dữ liệu");
+        return Ok(thongTin);
     }
 
     [HttpPut("{id}")]
@@ -45,6 +45,35 @@ public class SinhVienController : ControllerBase
             return BadRequest("Không tìm thấy sinh viên.");
         thongTin.name = sinhVien.name;
         return Ok(thongTin);
+    }
+
+    [HttpPost]
+    public IActionResult AddData([FromBody] SinhVien sinhVien)
+    {
+        var check = List_SinhVien.FirstOrDefault(tt => tt.id == sinhVien.id);
+        if (check != null)
+        {
+            return BadRequest("Id has existed");
+        }
+        var _sinhVien = new SinhVien()
+        {
+            id = sinhVien.id,
+            name = sinhVien.name,
+        };
+        List_SinhVien.Add(_sinhVien);
+        return Ok(_sinhVien);
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult DropData(int id)
+    {
+        var check = List_SinhVien.FirstOrDefault(tt => tt.id == id);
+        if (check == null)
+        {
+            return BadRequest("Id does not existed");
+        }
+        List_SinhVien.Remove(check);
+        return Ok("Remove is success!");
     }
 }
 

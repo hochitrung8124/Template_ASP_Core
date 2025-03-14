@@ -37,3 +37,16 @@ else
     <button type="submit">Cập nhập</button>
 </form>
 
+<form method="post" asp-action="AddData">
+    <label for="studentId">Nhập ID Sinh Viên:</label>
+    <input type="number" id="studentId" name="id" required />
+    <input type="text" id="studentName" name="name" required />
+    <button type="submit">Thêm</button>
+</form>
+
+<form method="post" action="DropById">
+    <label for="studentId">Nhập ID Sinh Viên:</label>
+    <input type="number" id="studentId" name="id" required />
+    <button id="dropButton" data-id="123" type="submit">Xóa</button>
+</form>
+
