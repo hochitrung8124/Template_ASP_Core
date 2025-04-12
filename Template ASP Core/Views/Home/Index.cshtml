@@ -1,11 +1,11 @@
-﻿@model IEnumerable<Data.WeatherForecast>;
+﻿@model IEnumerable<Data.SinhVien>;
 
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-@if(Model != null)
+@* @if(Model != null)
 {
     <p>
          @Model.FirstOrDefault().Summary 
@@ -18,4 +18,52 @@ else
     <p>
         Không có dữ liệu
     </p>
+} *@
+
+<!DOCTYPE html>
+<html lang="en">
+@{
+    ViewData["Title"] = "Tìm Kiếm Sinh Viên";
 }
+<h1>Tìm Kiếm Sinh Viên</h1>
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <p>
+            @item.id
+            @item.name
+        </p>
+    }
+}
+else
+{
+    <p>
+        Không có dữ liệu
+    </p>
+}
+<form method="get" asp-action="GetById">
+    <label for="studentId">Nhập ID Sinh Viên:</label>
+    <input type="number" id="studentId" name="id" required />
+    <button type="submit">Tìm</button>
+</form>
+
+<form method="post" asp-action="UpdateData">
+    <label for="studentId">Nhập ID Sinh Viên:</label>
+    <input type="number" id="studentId" name="id" required />
+    <input type="text" id="studentName" name="name" required />
+    <button type="submit">Cập nhập</button>
+</form>
+
+<form method="post" asp-action="AddData">
+    <label for="studentId">Nhập ID Sinh Viên:</label>
+    <input type="number" id="studentId" name="id" required />
+    <input type="text" id="studentName" name="name" required />
+    <button type="submit">Thêm</button>
+</form>
+
+<form method="post" action="DropById">
+    <label for="studentId">Nhập ID Sinh Viên:</label>
+    <input type="number" id="studentId" name="id" required />
+    <button id="dropButton" data-id="123" type="submit">Xóa</button>
+</form>

@@ -22,9 +22,9 @@ namespace Template_ASP_Core.Controllers
         async public Task<IActionResult> Index()
         {
             HttpClient client = new HttpClient();
-            var data = await client.GetAsync("https://localhost:7155/weatherforecast");
+            var data = await client.GetAsync($"https://localhost:7155/api/SinhVien");
             var res = await data.Content.ReadAsStringAsync();
-            var dataJson = JsonConvert.DeserializeObject<IEnumerable<WeatherForecast>>(res);
+            var dataJson = JsonConvert.DeserializeObject<IEnumerable<SinhVien>>(res);
             return View(dataJson);
         }
         public async Task<IActionResult> Privacy()
